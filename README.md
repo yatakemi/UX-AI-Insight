@@ -30,7 +30,7 @@
 npm run dev
 ```
 
-[.env](ai-ux-analyzer/.env) を設定してください
+[.env](.env) を設定してください
 
 [http://localhost:3000](http://localhost:3000)でアプリケーションを開くことができます。
 
