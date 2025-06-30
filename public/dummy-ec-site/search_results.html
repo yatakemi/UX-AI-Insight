@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>検索結果 | ダミーECサイト</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 1em 0;
+        text-align: center;
+      }
+      nav {
+        display: flex;
+        justify-content: center;
+        background-color: #e7e7e7;
+        padding: 0.5em 0;
+      }
+      nav a {
+        color: #333;
+        padding: 0.5em 1em;
+        text-decoration: none;
+      }
+      .container {
+        width: 80%;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+      .product-item {
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        width: 200px;
+      }
+      .product-item img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+      }
+      footer {
+        text-align: center;
+        padding: 1em 0;
+        background-color: #333;
+        color: #fff;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>検索結果</h1>
+    </header>
+    <nav>
+      <a href="index.html">ホーム</a>
+      <a href="search_results.html?q=all">全商品</a>
+    </nav>
+    <div class="container">
+      <h2>「<span id="search-query"></span>」の検索結果</h2>
+      <div class="product-list" id="product-list"></div>
+    </div>
+    <footer>
+      <p>&copy; 2023 ダミーECサイト</p>
+    </footer>
+
+    <script>
+      const products = [
+        {
+          id: 'product1',
+          name: 'クラシックTシャツ',
+          price: '¥1,000',
+          image: 'product1.png',
+          url: 'product1.html',
+          keywords: [
+            'クラシックTシャツ',
+            'Tシャツ',
+            'アパレル',
+            '衣料品',
+            'トップス',
+          ],
+        },
+        {
+          id: 'product2',
+          name: 'モダンデザインチェア',
+          price: '¥2,500',
+          image: 'product2.png',
+          url: 'product2.html',
+          keywords: [
+            'モダンデザインチェア',
+            'チェア',
+            '家具',
+            '椅子',
+            'インテリア',
+          ],
+        },
+        {
+          id: 'product3',
+          name: 'ワイヤレスイヤホンPro',
+          price: '¥3,000',
+          image: 'product3.png',
+          url: 'product3.html',
+          keywords: [
+            'ワイヤレスイヤホンPro',
+            'イヤホン',
+            'オーディオ',
+            'ガジェット',
+            'Pro',
+          ],
+        },
+        {
+          id: 'product4',
+          name: '高機能バックパック',
+          price: '¥4,500',
+          image: 'product4.png',
+          url: 'product4.html',
+          keywords: [
+            '高機能バックパック',
+            'バックパック',
+            'バッグ',
+            'リュック',
+            'アウトドア',
+          ],
+        },
+        {
+          id: 'product5',
+          name: 'スマートウォッチX',
+          price: '¥12,000',
+          image: 'product5.png',
+          url: 'product5.html',
+          keywords: [
+            'スマートウォッチX',
+            'スマートウォッチ',
+            '時計',
+            'ウェアラブル',
+            'ガジェット',
+          ],
+        },
+        {
+          id: 'product6',
+          name: 'オーガニックコーヒー豆',
+          price: '¥1,800',
+          image: 'product6.png',
+          url: 'product6.html',
+          keywords: [
+            'オーガニックコーヒー豆',
+            'コーヒー',
+            'コーヒー豆',
+            '飲料',
+            '食品',
+          ],
+        },
+        {
+          id: 'product7',
+          name: 'ゲーミングキーボード',
+          price: '¥8,000',
+          image: 'product7.png',
+          url: 'product7.html',
+          keywords: [
+            'ゲーミングキーボード',
+            'キーボード',
+            'ゲーム',
+            'PC周辺機器',
+          ],
+        },
+        {
+          id: 'product8',
+          name: 'ポータブル充電器',
+          price: '¥3,500',
+          image: 'product8.png',
+          url: 'product8.html',
+          keywords: [
+            'ポータブル充電器',
+            '充電器',
+            'モバイルバッテリー',
+            'ガジェット',
+          ],
+        },
+        {
+          id: 'product9',
+          name: 'セラミックマグカップ',
+          price: '¥1,200',
+          image: 'product9.png',
+          url: 'product9.html',
+          keywords: [
+            'セラミックマグカップ',
+            'マグカップ',
+            '食器',
+            'キッチン用品',
+          ],
+        },
+      ];
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const query = params.get('q');
+        const searchQueryElement = document.getElementById('search-query');
+        const productListElement = document.getElementById('product-list');
+
+        if (query) {
+          searchQueryElement.textContent = decodeURIComponent(query);
+          const lowerCaseQuery = decodeURIComponent(query).toLowerCase();
+
+          const filteredProducts = products.filter((product) => {
+            if (lowerCaseQuery === 'all') return true;
+            return (
+              product.keywords.some((keyword) =>
+                keyword.toLowerCase().includes(lowerCaseQuery)
+              ) || product.name.toLowerCase().includes(lowerCaseQuery)
+            );
+          });
+
+          if (filteredProducts.length > 0) {
+            filteredProducts.forEach((product) => {
+              const productItem = `
+                            <div class="product-item">
+                                <a href="${product.url}">
+                                    <img src="${product.image}" alt="${product.name}">
+                                    <h3>${product.name}</h3>
+                                    <p>${product.price}</p>
+                                </a>
+                            </div>
+                        `;
+              productListElement.insertAdjacentHTML('beforeend', productItem);
+            });
+          } else {
+            productListElement.innerHTML =
+              '<p>該当する商品が見つかりませんでした。</p>';
+          }
+        } else {
+          searchQueryElement.textContent = '全商品';
+          // Display all products if no query
+          products.forEach((product) => {
+            const productItem = `
+                        <div class="product-item">
+                            <a href="${product.url}">
+                                <img src="${product.image}" alt="${product.name}">
+                                <h3>${product.name}</h3>
+                                <p>${product.price}</p>
+                            </a>
+                        </div>
+                    `;
+            productListElement.insertAdjacentHTML('beforeend', productItem);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

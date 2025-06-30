@@ -1,0 +1,79 @@
+@import 'tailwindcss';
+
+@layer base {
+  .prose {
+    /* 全体的な行の高さを調整 */
+    line-height: 1.75;
+
+    /* 段落の装飾 */
+    p {
+      font-size: 1.15em; /* 少し大きく */
+      color: #e0e7ff; /* 明るい青紫 */
+      margin-bottom: 1.2em; /* 段落の下に余白を追加 */
+      text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.2); /* 控えめなテキストシャドウ */
+    }
+
+    /* リストアイテムの装飾 */
+    ul,
+    ol {
+      margin-bottom: 1.5em;
+      padding-left: 1.5em;
+    }
+    li {
+      font-size: 1.1em; /* 少し大きく */
+      color: #c7d2fe; /* リストアイテムの色 */
+      margin-bottom: 0.8em; /* リストアイテムの下に余白を追加 */
+      line-height: 1.6;
+    }
+    li::marker {
+      color: #a78bfa; /* リストマーカーの色 */
+    }
+
+    /* 強調表示 (太字) の装飾 */
+    strong {
+      color: #fcd34d; /* 鮮やかな黄色 */
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* 強めのテキストシャドウ */
+    }
+
+    /* 水平線の装飾 */
+    hr {
+      border: none;
+      border-top: 3px dashed #a78bfa; /* 太い点線ボーダー */
+      margin: 3em 0; /* 上下の余白を大きく */
+      background: linear-gradient(to right, #8b5cf6, #a78bfa, #c084fc); /* グラデーション */
+      height: 3px;
+    }
+
+    /* 見出しの装飾 */
+    h1 {
+      font-size: 3em; /* さらに大きく */
+      color: #8b5cf6; /* 紫系の鮮やかな色 */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* テキストシャドウ */
+      border-bottom: 4px solid #a78bfa; /* 太い下線 */
+      padding-bottom: 0.5em;
+      margin-top: 2em;
+      margin-bottom: 1.5em;
+      letter-spacing: 0.05em; /* 文字間隔 */
+    }
+
+    h2 {
+      font-size: 2.5em; /* 大きく */
+      color: #c084fc; /* 少し薄い紫 */
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* 控えめなテキストシャドウ */
+      border-bottom: 2px dashed #d8b4fe; /* 点線の下線 */
+      padding-bottom: 0.4em;
+      margin-top: 1.8em;
+      margin-bottom: 1.2em;
+    }
+
+    h3 {
+      font-size: 1.8em; /* やや大きく */
+      color: #e9d5ff; /* さらに薄い紫 */
+      margin-top: 1.5em;
+      margin-bottom: 1em;
+      border-left: 5px solid #a78bfa; /* 左ボーダー */
+      padding-left: 0.5em;
+    }
+  }
+}

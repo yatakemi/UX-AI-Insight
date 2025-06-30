@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ダミーECサイト</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 1em 0;
+        text-align: center;
+      }
+      nav {
+        display: flex;
+        justify-content: center;
+        background-color: #e7e7e7;
+        padding: 0.5em 0;
+      }
+      nav a {
+        color: #333;
+        padding: 0.5em 1em;
+        text-decoration: none;
+      }
+      .container {
+        width: 80%;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+      .product-item {
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        width: 200px;
+      }
+      .product-item img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+      }
+      .search-bar {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .search-bar input[type='text'] {
+        padding: 8px;
+        width: 60%;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      .search-bar button {
+        padding: 8px 15px;
+        background-color: #5cb85c;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      footer {
+        text-align: center;
+        padding: 1em 0;
+        background-color: #333;
+        color: #fff;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>ダミーECサイト</h1>
+    </header>
+    <nav>
+      <a href="index.html">ホーム</a>
+      <a href="search_results.html?q=all">全商品</a>
+    </nav>
+    <div class="container">
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="商品を検索..." />
+        <button onclick="performSearch()">検索</button>
+      </div>
+      <h2>おすすめ商品</h2>
+      <div class="product-list">
+        <div class="product-item">
+          <a href="product1.html">
+            <img src="product1.png" alt="クラシックTシャツ" />
+            <h3>クラシックTシャツ</h3>
+            <p>¥1,000</p>
+          </a>
+        </div>
+        <div class="product-item">
+          <a href="product2.html">
+            <img src="product2.png" alt="モダンデザインチェア" />
+            <h3>モダンデザインチェア</h3>
+            <p>¥2,500</p>
+          </a>
+        </div>
+        <div class="product-item">
+          <a href="product3.html">
+            <img src="product3.png" alt="ワイヤレスイヤホンPro" />
+            <h3>ワイヤレスイヤホンPro</h3>
+            <p>¥3,000</p>
+          </a>
+        </div>
+        <div class="product-item">
+          <a href="product4.html">
+            <img src="product4.png" alt="高機能バックパック" />
+            <h3>高機能バックパック</h3>
+            <p>¥4,500</p>
+          </a>
+        </div>
+        <div class="product-item">
+          <a href="product5.html">
+            <img src="product5.png" alt="スマートウォッチX" />
+            <h3>スマートウォッチX</h3>
+            <p>¥12,000</p>
+          </a>
+        </div>
+        <div class="product-item">
+          <a href="product6.html">
+            <img src="product6.png" alt="オーガニックコーヒー豆" />
+            <h3>オーガニックコーヒー豆</h3>
+            <p>¥1,800</p>
+          </a>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>&copy; 2023 ダミーECサイト</p>
+    </footer>
+
+    <script>
+      function performSearch() {
+        const query = document.getElementById('search-input').value;
+        window.location.href =
+          'search_results.html?q=' + encodeURIComponent(query);
+      }
+    </script>
+  </body>
+</html>
